@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: chmury-z2
+  name: chmury-z2
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 3
+      maxSurge: 5
+  replicas: 4
+  selector:
+    matchLabels:
+      app: chmury-z2
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: chmury-z2
+    spec:
+      containers:
+      - name: chmury-z2
+        image: madej22/chmury-z2:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        resources: {}
+status: {}

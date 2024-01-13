@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: stepcd
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          serviceAccountName: gitops
+          restartPolicy: Never
+          containers:
+            - name: zad2gitops 
+              image: madej22/chmury-z2-operator:latest
+              command: [sh, -e, -c]
+              args:
+                - git clone https://github.com/madej22/config_repo_chmury.git /tmp/z2_config_chmury && kubectl apply -f /tmp/z2_config_chmury/deployment.yaml && kubectl apply -f /tmp/z2_config_chmury/service.yaml && kubectl apply -f /tmp/z2_config_chmury/ingress.yaml
