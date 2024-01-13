@@ -16,8 +16,8 @@ kubectl apply -f operator.yaml
 
 Do sprawdzenia poprawności działania aplikacji wykorzystano następujące polecenia:
 ```
-kubectl get deployment cloud-app
-kubectl describe deployment cloud-app
+kubectl get deployment chmury-z2
+kubectl describe deployment chmury-z2
 curl http://zad2.lab
 ```
 
