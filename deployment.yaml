@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: chmury-z2
-        image: madej22/chmury-z2:latest
+        image: madej22/chmury_z2_image:latest
         imagePullPolicy: IfNotPresent
         ports:
           - name: http
